@@ -13,7 +13,7 @@ char *builtins[] = {"type", "echo", "exit"};
 void type(char *cmd) {
   int len = sizeof(builtins) / sizeof(builtins[0]);
   for (int i=0; i < len; i++) {
-    if(strcmp("type", cmd) == 0) {
+    if(strcmp(builtins[i], cmd) == 0) {
       printf("%s is a shell builtin\n", cmd);
       return;
     }
