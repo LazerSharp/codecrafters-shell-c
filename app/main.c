@@ -18,7 +18,7 @@ void type(char *cmd) {
       return;
     }
   }  
-  printf("%s: command not found\n", cmd);
+  printf("%s: not found\n", cmd);
 }
 
 int execCmd(char *cmd) {
