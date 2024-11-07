@@ -1,0 +1,128 @@
+Exec cmd : type ls
+Exec cmd (NL removed): type ls
+Exec cmd  (after exit) : type ls
+type checking...
+comparing.... [ls]
+cmp = 8
+comparing.... [ls]
+cmp = -7
+comparing.... [ls]
+cmp = -7
+searching in path...PATH: /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+while start - path: /home/linuxbrew/.linuxbrew/bin
+p: '/home/linuxbrew/.linuxbrew/bin'
+p: '/home/linuxbrew/.linuxbrew/bin/ls'
+while end
+while start - path: /home/linuxbrew/.linuxbrew/sbin
+p: '/home/linuxbrew/.linuxbrew/sbin'
+p: '/home/linuxbrew/.linuxbrew/sbin/ls'
+while end
+while start - path: /usr/local/sbin
+p: '/usr/local/sbin'
+p: '/usr/local/sbin/ls'
+while end
+while start - path: /usr/local/bin
+p: '/usr/local/bin'
+p: '/usr/local/bin/ls'
+while end
+while start - path: /usr/sbin
+p: '/usr/sbin'
+p: '/usr/sbin/ls'
+while end
+while start - path: /usr/bin
+p: '/usr/bin'
+p: '/usr/bin/ls'
+Exec cmd : type cp
+Exec cmd (NL removed): type cp
+Exec cmd  (after exit) : type cp
+type checking...
+comparing.... [cp]
+cmp = 17
+comparing.... [cp]
+cmp = 2
+comparing.... [cp]
+cmp = 2
+searching in path...PATH: /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+while start - path: /home/linuxbrew/.linuxbrew/bin
+p: '/home/linuxbrew/.linuxbrew/bin'
+p: '/home/linuxbrew/.linuxbrew/bin/cp'
+while end
+while start - path: /home/linuxbrew/.linuxbrew/sbin
+p: '/home/linuxbrew/.linuxbrew/sbin'
+p: '/home/linuxbrew/.linuxbrew/sbin/cp'
+while end
+while start - path: /usr/local/sbin
+p: '/usr/local/sbin'
+p: '/usr/local/sbin/cp'
+while end
+while start - path: /usr/local/bin
+p: '/usr/local/bin'
+p: '/usr/local/bin/cp'
+while end
+while start - path: /usr/sbin
+p: '/usr/sbin'
+p: '/usr/sbin/cp'
+while end
+while start - path: /usr/bin
+p: '/usr/bin'
+p: '/usr/bin/cp'
+Exec cmd : type aslkjkhdlahdahsd
+Exec cmd (NL removed): type aslkjkhdlahdahsd
+Exec cmd  (after exit) : type aslkjkhdlahdahsd
+type checking...
+comparing.... [aslkjkhdlahdahsd]
+cmp = 19
+comparing.... [aslkjkhdlahdahsd]
+cmp = 4
+comparing.... [aslkjkhdlahdahsd]
+cmp = 4
+searching in path...PATH: /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+while start - path: /home/linuxbrew/.linuxbrew/bin
+p: '/home/linuxbrew/.linuxbrew/bin'
+p: '/home/linuxbrew/.linuxbrew/bin/aslkjkhdlahdahsd'
+while end
+while start - path: /home/linuxbrew/.linuxbrew/sbin
+p: '/home/linuxbrew/.linuxbrew/sbin'
+p: '/home/linuxbrew/.linuxbrew/sbin/aslkjkhdlahdahsd'
+while end
+while start - path: /usr/local/sbin
+p: '/usr/local/sbin'
+p: '/usr/local/sbin/aslkjkhdlahdahsd'
+while end
+while start - path: /usr/local/bin
+p: '/usr/local/bin'
+p: '/usr/local/bin/aslkjkhdlahdahsd'
+while end
+while start - path: /usr/sbin
+p: '/usr/sbin'
+p: '/usr/sbin/aslkjkhdlahdahsd'
+while end
+while start - path: /usr/bin
+p: '/usr/bin'
+p: '/usr/bin/aslkjkhdlahdahsd'
+while end
+while start - path: /sbin
+p: '/sbin'
+p: '/sbin/aslkjkhdlahdahsd'
+while end
+while start - path: /bin
+p: '/bin'
+p: '/bin/aslkjkhdlahdahsd'
+while end
+Exec cmd : lasD
+Exec cmd (NL removed): lasD
+Exec cmd  (after exit) : lasD
+Exec cmd : EXIT 0
+Exec cmd (NL removed): EXIT 0
+Exec cmd  (after exit) : EXIT 0
+Exec cmd : 
+Exec cmd (NL removed): 
+Exec cmd  (after exit) : 
+Exec cmd : 
+Exec cmd (NL removed): 
+Exec cmd  (after exit) : 
+Exec cmd : 
+Exec cmd (NL removed): 
+Exec cmd  (after exit) : 
+Exec cmd : exit 0
+Exec cmd (NL removed): exit 0
