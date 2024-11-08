@@ -229,7 +229,7 @@ int main() {
   for(;;) {
     // Uncomment this block to pass the first stage
     printf("$ ");
-    fflush(stdout);
+    //fflush(stdout);
     // Wait for user input
     fgets(input, 100, stdin);
     int ret = execCmd(input);
