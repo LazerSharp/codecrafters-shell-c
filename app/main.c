@@ -78,7 +78,7 @@ char* searchExternalCmd(char *cmd) {
   return NULL;
 }
 
-char *builtins[] = {"type", "echo", "exit"}; 
+char *builtins[] = {"type", "echo", "exit", "pwd"}; 
 void type(char *cmd) {
   //fprintf(stderr,"type checking...\n");
   int len = sizeof(builtins) / sizeof(builtins[0]);
@@ -138,6 +138,10 @@ int execCmd(char *cmd) {
     if(startsWith("type ", cmd)) {
         type(&cmd[5]);
         return 0;
+    }
+    if(strcmp("pwd", cmd) == 0) {
+      puts(getenv("PWD"));
+      return 0;
     }
     char* cmd0 = trim(strsep(&cmd, " "));
     char* params = cmd;
