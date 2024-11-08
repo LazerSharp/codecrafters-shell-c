@@ -1,5 +1,0 @@
-Running /usr/bin/ls [(null)]
-Running /usr/bin/ls [-l]
-Running /usr/bin/cp [a b]
-a b: missing file operand
-Try 'a b --help' for more information.

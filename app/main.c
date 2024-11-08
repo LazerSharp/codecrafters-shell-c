@@ -111,10 +111,33 @@ void execExternalCmd(char *path, char* cmd0, char *params) {
       printf("Exec failed: %s [%s]", path, params);
     }
   } else {
-    while (0==waitpid(pid,&status,WNOHANG)) {
+    while (0 == waitpid(pid,&status,WNOHANG)) {
       sleep(1);
     }
   }
+}
+
+char ** parseCmd(char *cmd) {
+    char **ret = malloc(2*sizeof(char*));
+    ret[0] = trim(strsep(&cmd, " "));
+    ret[1] = cmd;
+    return ret;
+}
+
+int isDirectoryExists(const char* path) {
+  struct stat stats;
+  stat(path,&stats);
+  if(S_ISDIR(stats.st_mode)) {
+    return 1;
+  }
+  return 0;
+}
+
+void changeDir(char* dir) {
+  if(!isDirectoryExists(dir)) {
+    printf("cd: %s: No such file or directory\n", dir);
+  }
+  setenv("PWD", dir, 1);
 }
 
 // returns -1 if exit shell is issued
@@ -143,12 +166,17 @@ int execCmd(char *cmd) {
       puts(getenv("PWD"));
       return 0;
     }
-    char* cmd0 = trim(strsep(&cmd, " "));
-    char* params = cmd;
-
-    char * cmdPath = searchExternalCmd(cmd0);
+    if(startsWith("cd", cmd)) {
+      char **parsed = parseCmd(cmd);
+      changeDir(parsed[1]);
+      return 0;
+    }
+    char **parsed = parseCmd(cmd);
+    char *cmd0 = parsed[0];
+    char *params = parsed[1];
+    char *cmdPath = searchExternalCmd(cmd0);
     if(cmdPath != NULL) {
-      execExternalCmd(cmdPath, cmd0, params);
+         execExternalCmd(cmdPath, cmd0, params);
       return 0;
     }
     printf("%s: command not found\n", cmd0);
