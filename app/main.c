@@ -134,6 +134,34 @@ int isDirectoryExists(const char* path) {
 }
 
 void changeDir(char* dir) {
+  
+  if(startsWith("./", dir)) {
+    dir = &dir[2];
+    char* pwd = getenv("PWD");
+    pwd = strcat(pwd, "/");
+    dir = strcat(pwd, dir);
+    if(dir[strlen(dir)-1] == '/') {
+      dir[strlen(dir)-1] = 0; 
+    }
+  } else if(startsWith("../", dir)) {
+    char* pwd = getenv("PWD");
+    int nback = 0;
+    while(startsWith("../", dir)) {
+      dir = &dir[3];
+      nback++;
+    }
+    int l= strlen(pwd) - 1;
+    while(l >= 0 && nback > 0) {
+      if(pwd[l]=='/') nback--;
+      l--;
+    }
+    if(nback != 0) {
+      printf("cd: %s: No such file or directory\n", dir);
+    }
+    pwd[++l] = 0;
+    dir = pwd;
+  }
+
   if(!isDirectoryExists(dir)) {
     printf("cd: %s: No such file or directory\n", dir);
   }
