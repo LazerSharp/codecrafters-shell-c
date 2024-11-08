@@ -135,7 +135,9 @@ int isDirectoryExists(const char* path) {
 
 void changeDir(char* dir) {
   
-  if(startsWith("./", dir)) {
+  if(strcmp("~", dir) == 0) {
+    dir = getenv("HOME");
+  }else if(startsWith("./", dir)) {
     dir = &dir[2];
     char* pwd = getenv("PWD");
     pwd = strcat(pwd, "/");
