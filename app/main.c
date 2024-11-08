@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 void removeNewLine(char *str) {
@@ -40,7 +42,7 @@ char *trim(char *str)
 }
 
 
-char * strdup2(char * str) {
+char * strdup2(const char * str) {
   char* d = malloc(200);
   strcpy(d, str);
   return d;
@@ -100,9 +102,30 @@ void type(char *cmd) {
   printf("%s: not found\n", cmd);
 }
 
+void execExternalCmd(char *path, char* cmd0, char *params) {
+  //fprintf(stderr, "Running %s [%s]\n", path, params);
+  pid_t pid;
+  int status;
+  if((pid = fork()) == 0) { // child process
+    if(-1 == execl(path, cmd0, params, NULL)) {
+      printf("Exec failed: %s [%s]", path, params);
+    }
+  } else {
+    while (0==waitpid(pid,&status,WNOHANG)) {
+      sleep(1);
+    }
+  }
+}
+
+// returns -1 if exit shell is issued
+// returns 0 otherwise
 int execCmd(char *cmd) {
-    //fprintf(stderr,"Exec cmd : %s", cmd);
+    //char* cmd = strdup2(command);
     removeNewLine(cmd);
+    if(strlen(cmd) == 0) {
+      return 0;
+    }
+    //fprintf(stderr,"Exec cmd : %s", cmd);
     //fprintf(stderr,"Exec cmd (NL removed): %s\n", cmd);
     if(strcmp("exit 0", cmd) == 0) {
       return -1;
@@ -116,7 +139,15 @@ int execCmd(char *cmd) {
         type(&cmd[5]);
         return 0;
     }
-    printf("%s: command not found\n", cmd);
+    char* cmd0 = trim(strsep(&cmd, " "));
+    char* params = cmd;
+
+    char * cmdPath = searchExternalCmd(cmd0);
+    if(cmdPath != NULL) {
+      execExternalCmd(cmdPath, cmd0, params);
+      return 0;
+    }
+    printf("%s: command not found\n", cmd0);
     return 0;
 }
 
