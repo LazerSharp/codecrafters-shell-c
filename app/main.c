@@ -134,10 +134,16 @@ int isDirectoryExists(const char* path) {
 }
 
 void changeDir(char* dir) {
+  //int debug = 0; 
+  if(startsWith(".", dir)){
+    //printf(".dir*: [%s]\n", dir);
+    //printf("");
+  }
   
   if(strcmp("~", dir) == 0) {
     dir = getenv("HOME");
   }else if(startsWith("./", dir)) {
+    //printf(".dir**: [%s]\n", dir);
     dir = &dir[2];
     char* pwd = getenv("PWD");
     pwd = strcat(pwd, "/");
@@ -167,7 +173,11 @@ void changeDir(char* dir) {
   if(!isDirectoryExists(dir)) {
     printf("cd: %s: No such file or directory\n", dir);
   }
+//  if(debug == 1){
+//    printf(".dir***: [%s]\n", dir);
+//  }
   setenv("PWD", dir, 1);
+  return;
 }
 
 // returns -1 if exit shell is issued
@@ -199,6 +209,7 @@ int execCmd(char *cmd) {
     if(startsWith("cd", cmd)) {
       char **parsed = parseCmd(cmd);
       changeDir(parsed[1]);
+      //fflush(stdout);
       return 0;
     }
     char **parsed = parseCmd(cmd);
