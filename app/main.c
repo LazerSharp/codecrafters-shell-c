@@ -234,8 +234,8 @@ int main() {
     fgets(input, 100, stdin);
     int ret = execCmd(input);
     if(ret == -1) {
-      printf("ERRRRRRRRRRRRRR!");
-      return 1;
+      //printf("ERRRRRRRRRRRRRR!");
+      return 0;
     }
   }
   return 0;
